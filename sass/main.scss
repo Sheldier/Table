@@ -6,6 +6,7 @@
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto';
+	font-size: 15px;
 }
 object{
 	width: 27px;
@@ -16,18 +17,36 @@ ul{
 }
 li{
 	background-color: white;
-	border-bottom: 1px solid rgba(120,120,120,.5);
+	border-bottom: 1px solid rgba(120,120,120,.2);
 	height: 70px;
+	&:first-child span{
+		font-weight: 700;
+	}
+	&:last-child{
+		border-bottom: none;
+	}
 }
 a{
 	text-decoration: none;
 }
+span{
+	font-weight: 400;
+}
 /*======================================================*/
 
 .container{
-	width: 57vw;
-	margin: 0 auto;
+	width: 67vw;
+	margin: 166px auto;
+	& .title{
+		margin-bottom: 66px;
+		& h1{
+			font-size: 35px;
+			font-weight: 200;
+			
+		}
+	}
 	& .table{
+		border-radius: 0 15px 15px 0;
 	    background: -webkit-linear-gradient(left, #3BFBEA, #0CFEB8);
 	    background: -o-linear-gradient(left, #3BFBEA, #0CFEB8);
 	    background: linear-gradient(to right, transparent 0%, transparent 30%, #3BFBEA 30%, #0CFEB8);
@@ -36,20 +55,63 @@ a{
 		grid-gap: 25px;
 		padding: 20px 20px 70px 0;
 		& .li-info{
-				padding: 26px 0 0 25px;
+				padding: 22px 0 0 25px;
 				display: flex;
 			& p, span{
 				padding: 4px 0 0 17px;
+
+			}
+		}
+		& .column li{
+			&:first-child{
+				border-radius: 10px 10px 0px 0px;
+			}
+			&:last-child{
+				border-radius: 0 0 10px 10px;
 			}
 		}
 		& .table__work{
-
+			& .li-info{
+				&:first-child{
+					& span{
+						padding-left: 0;
+					}
+				}
+			}
 		}
 		& .table__cost{
+			& .li-info {
+				&:first-child{
+					& span:first-child{
+						margin-left: 0;
+					}
+				}
+				& span:last-child{
+					margin-left: auto;
+					padding-right: 55px;
+					font-weight: 700;
+				}
 
+			}
 		}
 		& .table__order{
-
+			& ul li{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				& .li-info{
+					padding: 0;
+					& a{
+						font-weight: 700;
+						color: #000;
+						padding: 10px 50px;
+				        background: -webkit-linear-gradient(left, #FFB000, #FF7B21);
+				        background: -o-linear-gradient(left, #FFB000, #FF7B21);
+				        background: linear-gradient(to right, #FFB000, #FF7B21);
+				        border-radius: 30px 30px 30px 30px;
+					}
+				}
+			}
 		}
 	}
 }
