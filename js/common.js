@@ -158,6 +158,8 @@ $(function() {
 // Привязка событий к строкам таблицы при щелчке мышью
 //=====================================================
 
+	//Первый столбец
+
 	$liWork.on('click', function() {
 		$buttons[$(this).index() - 1].dataset.clicked = true;
 		$($checkedObj[$(this).index() - 1]).animate({'fill-opacity': '1'}, 1000);
@@ -167,14 +169,14 @@ $(function() {
 
 	$liCost.on('click', function() {
 		$buttons[$(this).index() - 1].dataset.clicked = true;
-		$($checkedObj[$(this).index() - 1]).css('fill', 'orange');
+		$($checkedObj[$(this).index() - 1]).animate({'fill-opacity': '1'}, 1000);
 	});
 
 	//Третий столбец
 
 	$liOrder.on('click', function() {
 		$buttons[$(this).index() - 1].dataset.clicked = true;
-		$($checkedObj[$(this).index() - 1]).css('fill', 'orange');
+		$($checkedObj[$(this).index() - 1]).animate({'fill-opacity': '1'}, 1000);
 	});
 
 //================================================================
