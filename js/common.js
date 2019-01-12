@@ -7,11 +7,24 @@ $(function() {
 	var $liCost = $('.table__cost li').not(':first()');
 	var $liOrder = $('.table__order li').not(':first()');
 	var $buttons = $('.table__order li a');
-	var $checkedObj = $('.table__work svg')
-	
- 	//Отключение отображения различных элементов
+	var $checkedObj = $('.table__work svg');
+	var $modal = $('.modal');
+	var $showAll = $('.wrapup a');
 
+ 	//Изменение отображения различных элементов
+
+	function hidePartofStrings(){
+		$($liWork).hide();
+		$($liCost).hide();
+		$($liOrder).hide();
+		for(let i = 0; i < 7; i++){
+			$($liWork[i]).show();
+			$($liCost[i]).show();
+			$($liOrder[i]).show();
+		}
+	}
 	$guarantee.hide();
+	hidePartofStrings();
 
 //=================================================
 // Привязка событий к строкам таблицы при наведении
@@ -31,7 +44,7 @@ $(function() {
 			color: "black",
 			boxShadow: "0 0 15px rgba(229,240,28,0.6)"
 		});
-		$guarantee[$(this).index() - 1].style.display = 'inline';
+		$($guarantee[$(this).index() - 1]).show(600);
 		$checkedObj[$(this).index() - 1].style.stroke = "#FF7B21";
 	});
 	$liWork.on('mouseleave', function() {
@@ -53,7 +66,7 @@ $(function() {
 				boxShadow: "none"
 			});
 		}
-		$guarantee[$(this).index() - 1].style.display = 'none';
+		$($guarantee[$(this).index() - 1]).hide(600);
 		$checkedObj[$(this).index() - 1].style.stroke = "black";
 	});
 
@@ -71,7 +84,7 @@ $(function() {
 			color: "black",
 			boxShadow: "0 0 15px rgba(229,240,28,0.6)"
 		});
-		$guarantee[$(this).index() - 1].style.display = 'inline';
+		$($guarantee[$(this).index() - 1]).show(600);
 		$checkedObj[$(this).index() - 1].style.stroke = "#FF7B21";
 	});
 	$liCost.on('mouseleave', function() {
@@ -93,7 +106,7 @@ $(function() {
 				boxShadow: "none"
 			});
 		}
-		$guarantee[$(this).index() - 1].style.display = 'none';
+		$($guarantee[$(this).index() - 1]).hide(600);
 		$checkedObj[$(this).index() - 1].style.stroke = "black";
 	});
 
@@ -111,7 +124,7 @@ $(function() {
 			color: "black",
 			boxShadow: "0 0 15px rgba(229,240,28,0.6)"
 		});
-		$guarantee[$(this).index() - 1].style.display = 'inline';
+		$($guarantee[$(this).index() - 1]).show(600);
 		$checkedObj[$(this).index() - 1].style.stroke = "#FF7B21";
 	});
 	$liOrder.on('mouseleave', function() {
@@ -133,7 +146,7 @@ $(function() {
 				boxShadow: "none"
 			});
 		}
-		$guarantee[$(this).index() - 1].style.display = 'none';
+		$($guarantee[$(this).index() - 1]).hide(600);
 		$checkedObj[$(this).index() - 1].style.stroke = "black";
 	});
 
@@ -147,22 +160,47 @@ $(function() {
 
 	$liWork.on('click', function() {
 		$buttons[$(this).index() - 1].dataset.clicked = true;
+		$($checkedObj[$(this).index() - 1]).animate({'fill-opacity': '1'}, 1000);
 	});
 
 	//Второй столбец
 
 	$liCost.on('click', function() {
 		$buttons[$(this).index() - 1].dataset.clicked = true;
+		$($checkedObj[$(this).index() - 1]).css('fill', 'orange');
 	});
 
 	//Третий столбец
 
 	$liOrder.on('click', function() {
 		$buttons[$(this).index() - 1].dataset.clicked = true;
+		$($checkedObj[$(this).index() - 1]).css('fill', 'orange');
 	});
 
 //================================================================
 // Конец блока привязки событий при щелчке мышью к строкам таблицы 
 //================================================================
 
+// Появление модального окна при нажатии на кнопку
+
+	$($buttons).on('click', function(){
+		$($modal).css('display', 'flex');
+	});
+
+// Раскрытие таблицы при нажатии на кнопку
+	
+	$($showAll).on('click', function(event) {
+		if(document.querySelector(".table__work ul").lastElementChild.style.display == 'none'){
+			$($liWork).show();
+			$($liCost).show();
+			$($liOrder).show();
+			$('.wrapup svg polyline').attr('points', '0,10 8,3 15,10');
+			$('.wrapup a span').text('Скрыть');
+		}
+		else{
+			hidePartofStrings();
+			$('.wrapup svg polyline').attr('points', '0,0 7,8 15,0');
+			$('.wrapup a span').text('Показать всё');
+		}
+	});
 });
