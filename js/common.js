@@ -44,7 +44,9 @@ $(function() {
 			color: "black",
 			boxShadow: "0 0 15px rgba(229,240,28,0.6)"
 		});
-		$($guarantee[$(this).index() - 1]).show(600);
+		if(window.outerWidth > 460){
+			$($guarantee[$(this).index() - 1]).show(600);
+		}
 		$checkedObj[$(this).index() - 1].style.stroke = "#FF7B21";
 	});
 	$liWork.on('mouseleave', function() {
@@ -84,7 +86,9 @@ $(function() {
 			color: "black",
 			boxShadow: "0 0 15px rgba(229,240,28,0.6)"
 		});
-		$($guarantee[$(this).index() - 1]).show(600);
+		if(window.outerWidth > 460){
+			$($guarantee[$(this).index() - 1]).show(600);
+		}
 		$checkedObj[$(this).index() - 1].style.stroke = "#FF7B21";
 	});
 	$liCost.on('mouseleave', function() {
@@ -124,7 +128,9 @@ $(function() {
 			color: "black",
 			boxShadow: "0 0 15px rgba(229,240,28,0.6)"
 		});
-		$($guarantee[$(this).index() - 1]).show(600);
+		if(window.outerWidth > 460){
+			$($guarantee[$(this).index() - 1]).show(600);
+		}
 		$checkedObj[$(this).index() - 1].style.stroke = "#FF7B21";
 	});
 	$liOrder.on('mouseleave', function() {
@@ -160,7 +166,7 @@ $(function() {
 
 	//Первый столбец
 
-	$liWork.on('click', function() {
+	$liWork.on('click', function(e) {
 		$buttons[$(this).index() - 1].dataset.clicked = true;
 		$($checkedObj[$(this).index() - 1]).animate({'fill-opacity': '1'}, 1000);
 	});

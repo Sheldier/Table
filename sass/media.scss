@@ -52,6 +52,9 @@
 }
 @media screen and (max-width: 440px){
 	.container{
+		& .title{
+			margin-left: 30px;
+		}
 		width: 100%;
 		& .table{
 			grid-template-columns: 3fr 1fr 1fr !important;
